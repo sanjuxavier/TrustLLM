@@ -155,7 +155,7 @@ class LLMGeneration:
         else:
             saved_data = original_data
 
-        GROUP_SIZE = 8 if self.online_model else 1
+        GROUP_SIZE = 8 if self.online_model else 60 #Change according to GPU resource available
         for i in tqdm(range(0, len(saved_data), GROUP_SIZE), desc=f"Processing {data_path}", leave=False):
             group_data = saved_data[i:i + GROUP_SIZE]
             threads = []
